@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Pro</title>
+    <link rel="stylesheet" href="CsspokedexV1.css">
+    <link rel="icon" href="pokebola-pixelart1.png"
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Pokédex Pro</h1>
+
+    <div class="top-controls">
+        <button id="themeBtn" onclick="toggleTheme()">
+            🌙 Tema Escuro
+        </button>
+    </div>
+
+    <div class="tabs">
+
+        <button class="tab active"
+            onclick="abrirAba('pokedex',this)">
+            Pokédex
+        </button>
+
+        <button class="tab"
+            onclick="abrirAba('explorar',this)">
+            Explorar
+        </button>
+
+        <button class="tab"
+            onclick="abrirAba('favoritos',this)">
+            Favoritos
+        </button>
+
+    </div>
+
+    <div id="pokedex" class="tab-content active-content">
+
+        <div class="search-box">
+            <input
+                id="pokemonInput"
+                type="text"
+                placeholder="Digite nome ou número">
+
+            <button
+                class="search-btn"
+                onclick="buscarPokemon()">
+                Buscar
+            </button>
+        </div>
+
+        <div id="error" class="error"></div>
+
+        <div id="pokemonCard" class="pokemon-card">
+
+            <img id="pokemonImage">
+
+            <div id="pokemonName" class="name"></div>
+
+            <button id="favoriteBtn"
+                onclick="favoritarPokemon()">
+                ⭐ Favoritar
+            </button>
+
+            <div id="pokemonTypes" class="types"></div>
+
+            <div class="pokemon-tabs">
+
+                <button class="pokemon-tab active"
+                    onclick="abrirPokemonAba('info', this)">
+                    Informações
+                </button>
+
+                <button class="pokemon-tab"
+                    onclick="abrirPokemonAba('stats', this)">
+                    Status
+                </button>
+
+                <button class="pokemon-tab"
+                    onclick="abrirPokemonAba('sprites', this)">
+                    Sprites
+                </button>
+
+                <button class="pokemon-tab"
+                    onclick="abrirPokemonAba('evolution', this)">
+                    Evoluções
+                </button>
+
+            </div>
+
+            <div id="info"
+                class="pokemon-content active-pokemon-content">
+
+                <div class="info">
+                    <p><strong>Altura:</strong> <span id="pokemonHeight"></span> m</p>
+                    <p><strong>Peso:</strong> <span id="pokemonWeight"></span> kg</p>
+                    <p><strong>Número na dex: #</strong> <span id="pokemonId"></span></p>
+                </div>
+
+            </div>
+
+            <div id="stats" class="pokemon-content">
+                <h3 class="stats-title">Estatísticas</h3>
+                <div id="statsContainer"></div>
+            </div>
+
+            <div id="sprites" class="pokemon-content">
+
+                <div class="sprites-container">
+
+                    <div>
+                        <p>Normal</p>
+                        <img id="spriteNormal">
+                    </div>
+
+                    <div>
+                        <p class="shiny">Shiny</p>
+                        <img id="spriteShiny">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="evolution" class="pokemon-content">
+
+                <div id="evolutionChain"
+                class="evolution-container">
+
+                    <p>Carregando evolução...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="explorar" class="tab-content">
+
+        <h2>Explorar Pokémon</h2>
+
+        <div class="filter-container">
+
+            <select id="typeFilter"
+                onchange="filtrarPorTipo()">
+
+                <option value="">
+                    Todos os tipos
+                </option>
+
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="grass">Grass</option>
+                <option value="electric">Electric</option>
+                <option value="psychic">Psychic</option>
+                <option value="dragon">Dragon</option>
+                <option value="ghost">Ghost</option>
+                <option value="dark">Dark</option>
+
+            </select>
+
+        </div>
+
+        <div id="pokemonGrid"></div>
+
+    </div>
+
+    <div id="favoritos" class="tab-content">
+
+        <h2>⭐ Favoritos</h2>
+
+        <div id="favoritesList"></div>
+
+    </div>
+
+</div>
+
+<script src="PokedexJSV1.js"></script>
+
+</body>
+</html>
